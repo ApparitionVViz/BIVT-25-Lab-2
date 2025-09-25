@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace Lab2
 {
@@ -10,9 +10,11 @@ namespace Lab2
         {
             double answer = 0;
 
-            // code here
-
-            // end
+            for (int i = 2; i <= n; i += 2)
+            {
+                double a = (double)i / (i + 1);
+                answer += a;
+            }
 
             return answer;
         }
@@ -20,19 +22,27 @@ namespace Lab2
         {
             double answer = 0;
 
-            // code here
-
-            // end
-
+            double a = 1.0;
+            for (int i = 0; i <= n; i++)
+            {
+                answer += a;
+                a /= x;
+            }
+            
             return answer;
         }
         public long Task3(int n)
         {
             long answer = 0;
 
-            // code here
-
-            // end
+            long fact = 1;
+            long sum = 1;
+            for (int i = 1; i <= n; i++)
+            {
+                fact *= i;
+                sum += fact;
+            }
+            answer = sum;
 
             return answer;
         }
@@ -59,10 +69,21 @@ namespace Lab2
         public int Task6(int limit)
         {
             int answer = 0;
+            int elem = 1;
+            for (int i = 0; ; i++)
+            {
+                if (elem < limit)
+                {
+                    elem *= 2;
+                    answer += elem;
+                }
+                else
+                {
 
-            // code here
+                    break;
+                }
 
-            // end
+            }
 
             return answer;
         }
