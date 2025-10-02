@@ -133,18 +133,20 @@ namespace Lab2
             double SS = 0;
             double SY = 0;
 
-            for (double x = a; x <= b; x = Math.Round(x + h, 4))
+            for (double x = a; x <= b + 0.00001; x += h)
             {
-                double s = 0;
-                double current_x = x;
-                double c = 1;
-                for (int i = 0; Math.Abs(c * current_x / (2 * i + 1)) >= E; i++)
+                int i = 0; 
+                double c = -1;
+                double current_x = 1;
+                double s = 1;
+                while (Math.Abs(s) >= E)
                 {
-                    s += c * current_x / (2 * i + 1);
+                    s = -c * x * current_x / (2 * i + 1);
+                    SS += s;
+                    current_x = current_x * x * x;
+                    i++;
                     c *= -1;
-                    current_x *= x * x;
                 }
-                SS += s;
                 SY += Math.Atan(x);
             }
 
