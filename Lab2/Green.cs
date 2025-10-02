@@ -49,10 +49,21 @@ namespace Lab2
         public double Task4(double x)
         {
             double answer = 0;
+            int n = 1;
+            double current_x_power = x;
+            while (true)
+            {
+                double otv = Math.Sin(n * current_x_power);
+                if (Math.Abs(otv) < E)
+                {
+                    break;
+                }
 
-            // code here
+                answer += otv;
+                n++;
+                current_x_power *= x;
 
-            // end
+            }
 
             return answer;
         }
@@ -60,9 +71,21 @@ namespace Lab2
         {
             int answer = 0;
 
-            // code here
+            int n = 1;
+            double a = 0;
+            double current_x_power = x;
 
-            // end
+            while (true)
+            {
+                double otv = 1 / current_x_power;
+                if (Math.Abs(otv - a) < E)
+                {
+                    answer = n; break;
+                }
+                a = otv;
+                n++;
+                current_x_power *= x;
+            }
 
             return answer;
         }
@@ -92,9 +115,16 @@ namespace Lab2
         {
             int answer = 0;
 
-            // code here
+            double current_L = L;
+            int n = 0;
+            for (; current_L > Da; n++)
+            {
+                current_L /= 2;
 
-            // end
+
+            }
+            answer = n;
+            Console.WriteLine(answer);
 
             return answer;
         }
@@ -103,9 +133,28 @@ namespace Lab2
             double SS = 0;
             double SY = 0;
 
-            // code here
+            for (double x = a; x <= b; x += h)
+            {
+                double sum = 0;
+                double otv = x;
+                double xSquared = x * x;
+                double currentPower = x;
+                int sign = 1;
+                int d = 1;
 
-            // end
+                while (Math.Abs(otv) >= E)
+                {
+                    sum += otv;
+
+                    sign *= -1;
+                    d += 2;
+                    currentPower *= xSquared;
+                    otv = sign * currentPower / d;
+                }
+
+                SS += sum;
+                SY += Math.Atan(x);
+            }
 
             return (SS, SY);
         }
